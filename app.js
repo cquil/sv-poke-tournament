@@ -1,6 +1,6 @@
 const express = require('express');
 const Twitter = require('twitter');
-
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
@@ -20,7 +20,7 @@ app.get('/fetch-tweets', async (req, res) => {
         res.status(500).json({error: 'Failed to fetch tweets'});
     }
 });
-
+app.use(cors()); 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
 });
