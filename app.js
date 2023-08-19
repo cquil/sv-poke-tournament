@@ -11,6 +11,7 @@ const client = new Twitter({
   access_token_secret: 'usqpPxJxpWc4XSoFNO6seHaelQbcQH0YsmbBs6ZMoGbUk'
 });
 
+app.use(cors());
 app.get('/fetch-tweets', async (req, res) => {
     try {
         const params = {q: '#仲間大会', count: 30}; // 例: 最新の10ツイートを取得
@@ -20,7 +21,7 @@ app.get('/fetch-tweets', async (req, res) => {
         res.status(500).json({error: 'Failed to fetch tweets'});
     }
 });
-app.use(cors()); 
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
 });
